@@ -89,9 +89,9 @@ def main() -> None:
 
 def pr():
     assert Path("newsfragments").is_dir()
-    check_call("git", "checkout", "-B", "update-core-addon-lists", "origin/master")
     check_call("git", "add", "setuptools_odoo")
     check_call("git", "commit", "-m", "Update core addon lists")
+    check_call("git", "checkout", "-B", "update-core-addon-lists", "origin/master")
     #check_call("git", "push", "-f", "origin")
     output = check_output(
         "gh", "pr", "create", "--title", "Update core addon lists", "--body", ""
@@ -106,4 +106,4 @@ def pr():
 
 if __name__ == "__main__":
     main()
-    pr()
+ #   pr()
