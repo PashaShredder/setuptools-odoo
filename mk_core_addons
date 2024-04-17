@@ -11,9 +11,10 @@ from manifestoo_core.odoo_series import OdooEdition
 
 SERIES = [
     # branch,  enterprise, target
-    ("16.0", True, "16"),
-    ("15.0", True, "15"),
-    ("14.0", True, "14"),
+    ("17.0", False, "17"),
+    #("16.0", True, "16"),
+    #("15.0", True, "15"),
+    #("14.0", True, "14"),
     # ("13.0", True, "13"),
     # ("12.0", True, "12"),
     # ("11.0", True, "11"),
@@ -91,7 +92,7 @@ def pr():
     check_call("git", "checkout", "-B", "update-core-addon-lists", "origin/master")
     check_call("git", "add", "setuptools_odoo")
     check_call("git", "commit", "-m", "Update core addon lists")
-    check_call("git", "push", "-f", "origin")
+    #check_call("git", "push", "-f", "origin")
     output = check_output(
         "gh", "pr", "create", "--title", "Update core addon lists", "--body", ""
     )
@@ -100,7 +101,7 @@ def pr():
     news_path.write_text("Update core addon lists.\n")
     check_call("git", "add", str(news_path))
     check_call("git", "commit", "--amend", "--no-edit")
-    check_call("git", "push", "-f")
+   # check_call("git", "push", "-f")
 
 
 if __name__ == "__main__":
