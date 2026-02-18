@@ -13,7 +13,7 @@ except ImportError:
     from pkg_resources import resource_string as _resource_string
 
 def _addons(suffix):
-    b = resource_string("setuptools_odoo", "addons-%s.txt" % suffix)
+    b = _resource_string("setuptools_odoo", "addons-%s.txt" % suffix)
     return {a for a in b.decode("ascii").split("\n") if not a.startswith("#")}
 
 
