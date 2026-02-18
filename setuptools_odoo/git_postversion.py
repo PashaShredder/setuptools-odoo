@@ -5,8 +5,11 @@
 import os
 import subprocess
 
-from pkg_resources import parse_version
-
+try:
+    from packaging.version import Version as parse_version
+except ImportError:
+    from pkg_resources import parse_version
+    
 from .manifest import MANIFEST_NAMES, NoManifestFound, parse_manifest, read_manifest
 
 STRATEGY_NONE = "none"
