@@ -5,8 +5,12 @@
 They are therefore considered as installed as soon as the 'odoo' dependency
 is satisfied. """
 
-from pkg_resources import resource_string
-
+try:
+    from importlib.resources import files
+    def _resource_string(package, resource_name):
+        return files(package).joinpath(resource_name).read_bytes()
+except ImportError:
+    from pkg_resources import resource_string as _resource_string
 
 def _addons(suffix):
     b = resource_string("setuptools_odoo", "addons-%s.txt" % suffix)
